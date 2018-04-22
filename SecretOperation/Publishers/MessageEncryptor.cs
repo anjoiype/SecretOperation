@@ -2,6 +2,9 @@
 
 namespace SecretOperation.Publishers
 {
+    /// <summary>
+    /// Class to encrypt the message and notify the subscribers after encryption
+    /// </summary>
     public class MessageEncryptor : IPublisher
     {
         readonly IEncryptionTechnique encryptionTechnique;        

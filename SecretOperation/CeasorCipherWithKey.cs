@@ -2,6 +2,11 @@
 
 namespace SecretOperation
 {
+    /// <summary>
+    /// Dummy encryption class. Introduces a dummy encryption 
+    /// in which every letter of the message is replaced with 
+    /// another which is 'key' times beyond in ASCII table. 
+    /// </summary>
     public class CeasorCipherWithKey: IEncryptionTechnique
     {
         private readonly Message message;

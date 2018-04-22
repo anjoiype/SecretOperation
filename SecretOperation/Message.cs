@@ -6,8 +6,8 @@ namespace SecretOperation
 {
     public class Message
     {
-        public string Text { get; set; }
-        public MessageType Type { get; set; }              
+        public string Text { get; private set; }
+        public MessageType Type { get; private set; }              
         public Message(MessageType type)
         {
             Type = type;

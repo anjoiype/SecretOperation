@@ -2,6 +2,9 @@
 using System;
 namespace SecretOperation.Subscribers
 {
+    /// <summary>
+    /// Abstract class for the subscriber. Subscriber can call event of publisher through interface
+    /// </summary>
     abstract class Subscriber
     {
         public readonly IPublisher publisher;

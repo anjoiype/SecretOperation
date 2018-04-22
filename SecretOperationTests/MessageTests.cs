@@ -5,6 +5,7 @@ namespace SecretOperation.Tests
     [TestClass()]
     public class MessageTests
     {
+        #region positive scenarios
         [TestMethod()]
         public void Message_GetMessageCorrectly_ReturnsTrue()
         {
@@ -27,5 +28,6 @@ namespace SecretOperation.Tests
             var messageTwo = new Message(MessageType.InternalSecurity);
             Assert.AreNotEqual(messageOne.Type, messageTwo.Type);
         }
+        #endregion
     }
 }

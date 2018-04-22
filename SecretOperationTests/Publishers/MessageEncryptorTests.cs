@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace SecretOperation.Publishers.Tests
 {
     [TestClass()]
     public class MessageEncryptorTests
     {
+        #region positive scenarios
         [TestMethod()]
         public void Encrypt_InvokeEvent_ReturnsTrue()
         {
@@ -21,5 +23,23 @@ namespace SecretOperation.Publishers.Tests
 
             Assert.AreNotEqual(emptyMessage, string.Empty);
         }
+        #endregion
+        #region negative scenario
+        [TestMethod()]
+        public void Constructor_PassNull_ThrowError()
+        {
+            ArgumentNullException argumentNullException = null;
+            try
+            {
+                new MessageEncryptor(null);
+                
+            }
+            catch(ArgumentNullException argex)
+            {
+                argumentNullException = argex;
+            }
+            Assert.IsNotNull(argumentNullException);
+        }       
+        #endregion
     }
 }

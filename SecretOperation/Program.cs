@@ -14,25 +14,23 @@ namespace SecretOperation
                 var messageEncryptor = new Publishers.MessageEncryptor(encryptionTechnique);
 
                 //Adding listners               
-                var financeListner = new Subscribers.FinanceListener();
-                var defenceListner = new Subscribers.DefenceListener();
-                var generalListner = new Subscribers.GeneralListener();
+                var financeListner = new Subscribers.FinanceListener(messageEncryptor);
+                var defenceListner = new Subscribers.DefenceListener(messageEncryptor);
+                var generalListner = new Subscribers.GeneralListener(messageEncryptor);
 
                 //Subscribing
                 switch (message.Type)
                 {
                     case MessageType.DefenceInfo:
-                        messageEncryptor.MessageEncrypted += defenceListner.OnMessageEncrypted;
+                        defenceListner.Publisher.MessageEncrypted += defenceListner.OnMessageEncrypted;
                         break;
                     case MessageType.FinancialInfo:
-                        messageEncryptor.MessageEncrypted += financeListner.OnMessageEncrypted;
+                        financeListner.Publisher.MessageEncrypted += financeListner.OnMessageEncrypted;
                         break;
                 }
-                messageEncryptor.MessageEncrypted += generalListner.OnMessageEncrypted;
+                generalListner.Publisher.MessageEncrypted += generalListner.OnMessageEncrypted;
 
-                messageEncryptor.Encrypt();
-
-                
+                messageEncryptor.Encrypt();                
             } 
             catch(FileNotFoundException fileNotFound)
             {

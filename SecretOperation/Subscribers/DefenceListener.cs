@@ -3,15 +3,10 @@ using System;
 
 namespace SecretOperation.Subscribers
 {
-    class DefenceListener
+    class DefenceListener:Subscriber
     {
-        public IPublisher Publisher { get; private set; }
-
-        public DefenceListener(IPublisher publisher)
-        {
-            Publisher = publisher;
-        }
-        public void OnMessageEncrypted(object source, MessageEventArgs message)
+        public DefenceListener(IPublisher publisher) : base(publisher) { }        
+        public override void OnMessageEncrypted(object source, MessageEventArgs message)
         {
             Console.WriteLine("\nI am interested in Defence messages and the message I got is :\n " + message.Data);
         }

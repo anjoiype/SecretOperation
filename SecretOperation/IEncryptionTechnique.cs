@@ -1,6 +1,6 @@
 ﻿namespace SecretOperation
 {
-    public interface IEncrypt
+    public interface IEncryptionTechnique
     {
         string Encrypt();
     }

@@ -7,6 +7,6 @@ namespace SecretOperation.Publishers
     public interface IPublisher
     {
         event EventHandler<MessageEventArgs> MessageEncrypted;
-        void MessageEncrypt(string message);
+        void MessageEncrypt(string encryptedMessage);
     }
 }

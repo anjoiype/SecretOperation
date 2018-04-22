@@ -9,26 +9,30 @@ namespace SecretOperation
         {
             try
             {
-                var message = new Message(MessageType.DefenceInfo);
+                var message = new Message(MessageType.InternalSecurity);
                 var encryptionTechnique = new CeasorCipherWithKey(message, 7);
                 var messageEncryptor = new Publishers.MessageEncryptor(encryptionTechnique);
 
                 //Adding listners               
-                var financeListner = new Subscribers.FinanceListener(messageEncryptor);
-                var defenceListner = new Subscribers.DefenceListener(messageEncryptor);
-                var generalListner = new Subscribers.GeneralListener(messageEncryptor);
+                var financeListener = new Subscribers.FinanceListener(messageEncryptor);
+                var defenceListener = new Subscribers.DefenceListener(messageEncryptor);
+                var internalSecurityListener = new Subscribers.InternalSecurityListener(messageEncryptor);
+                var generalListener = new Subscribers.GeneralListener(messageEncryptor);
 
                 //Subscribing
                 switch (message.Type)
                 {
                     case MessageType.DefenceInfo:
-                        defenceListner.Publisher.MessageEncrypted += defenceListner.OnMessageEncrypted;
+                        defenceListener.publisher.MessageEncrypted += defenceListener.OnMessageEncrypted;
                         break;
                     case MessageType.FinancialInfo:
-                        financeListner.Publisher.MessageEncrypted += financeListner.OnMessageEncrypted;
+                        financeListener.publisher.MessageEncrypted += financeListener.OnMessageEncrypted;
+                        break;
+                    case MessageType.InternalSecurity:
+                        internalSecurityListener.publisher.MessageEncrypted += internalSecurityListener.OnMessageEncrypted;
                         break;
                 }
-                generalListner.Publisher.MessageEncrypted += generalListner.OnMessageEncrypted;
+                generalListener.publisher.MessageEncrypted += generalListener.OnMessageEncrypted;
 
                 messageEncryptor.Encrypt();                
             } 

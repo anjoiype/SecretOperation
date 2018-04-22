@@ -2,10 +2,10 @@
 
 namespace SecretOperation
 {
-    public class CeasorCipherWithKey:IEncrypt
+    public class CeasorCipherWithKey: IEncryptionTechnique
     {
-        private Message message;
-        private int key;
+        private readonly Message message;
+        private readonly int key;
         /// <summary>
         /// Constructor for ceasor cipher method
         /// </summary>
@@ -13,6 +13,8 @@ namespace SecretOperation
         /// <param name="key">Number of positions to shift letters </param>
         public CeasorCipherWithKey(Message message, int key)
         {
+            if(message==null)
+                throw new ArgumentNullException(nameof(message));
             this.message = message;
             this.key = key;
         }
@@ -43,8 +45,9 @@ namespace SecretOperation
             catch(Exception ex)
             {
                 Console.WriteLine("Error occured while encrypting message: "+ex);
+                throw;
             }
-            return string.Empty;
+            
             
         }
     }

@@ -7,12 +7,11 @@ namespace SecretOperation
     public class Message
     {
         public string Text { get; set; }
-        public MessageType Type { get; set; }
-              
+        public MessageType Type { get; set; }              
         public Message(MessageType type)
         {
-            this.Type = type;
-            switch (this.Type)
+            Type = type;
+            switch (Type)
             {
                 case MessageType.DefenceInfo:
                     Text = GetFileData("DefenceInfo.txt");
@@ -28,6 +27,8 @@ namespace SecretOperation
                     break;
             }            
         }
+
+        #region private methods
         private string GetFileData(string fileName)
         {
             try
@@ -38,13 +39,12 @@ namespace SecretOperation
                     string fullPath = string.Format("{0}\\Resources\\{1}", executtingDirPath, fileName);
                     using (StreamReader reader = new StreamReader(fullPath))
                     {
-
                         string fileData = reader.ReadToEnd();
                         return fileData;
                     }
                 }                
             }
-            catch(FileNotFoundException fileNotFound)
+            catch(FileNotFoundException)
             {
                 throw;
             }
@@ -52,10 +52,11 @@ namespace SecretOperation
             {
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(ex.Message);
-                
+                throw;
             }
             return string.Empty;
-        }     
+        }
+        #endregion
 
     }
 }

@@ -4,11 +4,12 @@ namespace SecretOperation.Publishers
 {
     public class MessageEncryptor : IPublisher
     {
-        IEncrypt encryptionTechnique;        
+        readonly IEncryptionTechnique encryptionTechnique;        
         public event EventHandler<MessageEventArgs> MessageEncrypted;
-
-        public MessageEncryptor(IEncrypt encryptionTechnique)
+        public MessageEncryptor(IEncryptionTechnique encryptionTechnique)
         {
+            if (encryptionTechnique == null)
+                throw new ArgumentNullException(nameof(encryptionTechnique));
             this.encryptionTechnique = encryptionTechnique;
         }
         /// <summary>
@@ -26,9 +27,9 @@ namespace SecretOperation.Publishers
             catch (Exception ex)
             {
                 Console.WriteLine("Error occured while calling the encryption technique.Please find below the details: \n" + ex);
+                throw;
             }
         }
-
         public void MessageEncrypt(string encryptedMessage)
         {
             OnMessageEncrypted(encryptedMessage);
@@ -47,9 +48,9 @@ namespace SecretOperation.Publishers
             catch(Exception ex)
             {
                 Console.WriteLine("Error occured while invoking the listners.Please find below the details: \n" + ex);
+                throw;
             }
             
         }
-
     }
 }

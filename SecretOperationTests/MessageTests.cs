@@ -19,5 +19,13 @@ namespace SecretOperation.Tests
             var messageTwo = new Message(MessageType.FinancialInfo);
             Assert.AreNotEqual(messageOne.Type, messageTwo.Type);
         }
+
+        [TestMethod()]
+        public void Message_GetMessageTypeCorrectly_ReturnsTrue()
+        {
+            var messageOne = new Message(MessageType.DefenceInfo);
+            var messageTwo = new Message(MessageType.InternalSecurity);
+            Assert.AreNotEqual(messageOne.Type, messageTwo.Type);
+        }
     }
 }

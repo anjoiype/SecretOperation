@@ -6,11 +6,21 @@ namespace SecretOperation
     {
         private Message message;
         private int key;
+        /// <summary>
+        /// Constructor for ceasor cipher method
+        /// </summary>
+        /// <param name="message">Accepts the message object</param>
+        /// <param name="key">Number of positions to shift letters </param>
         public CeasorCipherWithKey(Message message, int key)
         {
             this.message = message;
             this.key = key;
         }
+
+        /// <summary>
+        /// Method to encrypt the message based on the key provided
+        /// </summary>
+        /// <returns>Encrypted message</returns>
         public string Encrypt()
         {
             try

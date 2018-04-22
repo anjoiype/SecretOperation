@@ -13,11 +13,10 @@ namespace SecretOperation
                 var encryptionTechnique = new CeasorCipherWithKey(message, 7);
                 var messageEncryptor = new Publishers.MessageEncryptor(encryptionTechnique);
 
-                //Adding listners
-                var listner = new Subscribers.Listner();
-                var financeListner = new Subscribers.FinanceListner();
-                var defenceListner = new Subscribers.FinanceListner();
-                var generalListner = new Subscribers.GeneralListner();
+                //Adding listners               
+                var financeListner = new Subscribers.FinanceListener();
+                var defenceListner = new Subscribers.DefenceListener();
+                var generalListner = new Subscribers.GeneralListener();
 
                 //Subscribing
                 switch (message.Type)
@@ -29,7 +28,6 @@ namespace SecretOperation
                         messageEncryptor.MessageEncrypted += financeListner.OnMessageEncrypted;
                         break;
                 }
-                messageEncryptor.MessageEncrypted += listner.OnMessageEncrypted;
                 messageEncryptor.MessageEncrypted += generalListner.OnMessageEncrypted;
 
                 messageEncryptor.Encrypt();

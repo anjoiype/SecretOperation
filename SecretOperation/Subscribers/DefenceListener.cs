@@ -2,11 +2,11 @@
 
 namespace SecretOperation.Subscribers
 {
-    class GeneralListner
+    class DefenceListener
     {
         public void OnMessageEncrypted(object source, MessageEventArgs message)
         {
-            Console.WriteLine("\nI am a general lsitner and the message I got is: \n " + message.Data);
+            Console.WriteLine("\nI am interested in Defence messages and the message I got is :\n " + message.Data);
         }
     }
 }

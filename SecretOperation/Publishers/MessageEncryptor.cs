@@ -4,9 +4,8 @@ namespace SecretOperation.Publishers
 {
     public class MessageEncryptor
     {
-        IEncrypt encryptionTechnique;
-        public delegate void MessageEncryptedEventHandler(object source, MessageEventArgs args);
-        public event MessageEncryptedEventHandler MessageEncrypted;
+        IEncrypt encryptionTechnique;        
+        public event EventHandler<MessageEventArgs> MessageEncrypted;
 
         public MessageEncryptor(IEncrypt encryptionTechnique)
         {

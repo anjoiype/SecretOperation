@@ -17,3 +17,6 @@ is the `key`
 >The input is read from file which is kept under `Resources` folder. Each file type is named accordingly. In the `Message.cs` class 
 invocation of correct type takes place. Again this hard coded approach is taken to attain simplicity of program and to concentrate on 
 pattern demo.
+
+'Program.cs' will first instantiate the message with its type, which can be any one from Defence, finance or internal security. After that encrytption technique is chosen (here its a dummy technique) and instantiate `MessageEncryptor` using that. After that different type of subscriber will subscribe to the message with topics they are interested about. There is a general listener which is interested in all the message irrespective of its type. 
+After the encryption subscribers are notified with encrypted message which will be printed in the console.

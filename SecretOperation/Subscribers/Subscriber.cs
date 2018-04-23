@@ -12,6 +12,7 @@ namespace SecretOperation.Subscribers
         {
             if (publisher == null)
                 throw new ArgumentNullException(nameof(publisher));
+
             this.publisher = publisher;
         }
         public virtual void OnMessageEncrypted(object source, MessageEventArgs message)

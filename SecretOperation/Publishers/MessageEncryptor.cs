@@ -13,6 +13,7 @@ namespace SecretOperation.Publishers
         {
             if (encryptionTechnique == null)
                 throw new ArgumentNullException(nameof(encryptionTechnique));
+
             this.encryptionTechnique = encryptionTechnique;
         }
         /// <summary>

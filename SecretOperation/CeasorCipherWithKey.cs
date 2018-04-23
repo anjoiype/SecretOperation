@@ -7,7 +7,7 @@ namespace SecretOperation
     /// in which every letter of the message is replaced with 
     /// another which is 'key' times beyond in ASCII table. 
     /// </summary>
-    public class CeasorCipherWithKey: IEncryptionTechnique
+    public class CeasorCipherWithKey : IEncryptionTechnique
     {
         private readonly Message message;
         private readonly int key;
@@ -18,8 +18,9 @@ namespace SecretOperation
         /// <param name="key">Number of positions to shift letters </param>
         public CeasorCipherWithKey(Message message, int key)
         {
-            if(message==null)
+            if (message == null)
                 throw new ArgumentNullException(nameof(message));
+
             this.message = message;
             this.key = key;
         }
@@ -47,13 +48,13 @@ namespace SecretOperation
                 }
                 return new string(encryptedText);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Error occured while encrypting message: "+ex);
+                Console.WriteLine("Error occured while encrypting message: " + ex);
                 throw;
             }
-            
-            
+
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SecretOperation
         {
             try
             {
-                var message = new Message(MessageType.InternalSecurity);
+                var message = new Message(MessageType.DefenceInfo);
                 var encryptionTechnique = new CeasorCipherWithKey(message, 7);
                 var messageEncryptor = new Publishers.MessageEncryptor(encryptionTechnique);
 
